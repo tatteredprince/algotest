@@ -22,4 +22,5 @@ Tests use Python's standard `unittest`, no additional dependencies are needed.
 
 This repository provides tests for algorithms:
 - Array sorting
+- Factorial
 - Fibonacci sequence
