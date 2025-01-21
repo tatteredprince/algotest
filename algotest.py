@@ -2,7 +2,7 @@
 """
 Base module for tests.
 
-Check environment variables and executable binary before starting tests.
+Check environment variables and external executable before starting tests.
 
 Path to the executable is set via environment variable TESTEXEC.
 
