@@ -38,7 +38,7 @@ class AlgoTest(unittest.TestCase):
                 proc.kill()
                 raise ChildProcessError("executable timed out")
 
-            return stdout.rstrip()
+            return stdout.rstrip("\n")
         else:
             proc_result = None
 
@@ -48,7 +48,7 @@ class AlgoTest(unittest.TestCase):
             except subprocess.TimeoutExpired:
                 raise ChildProcessError("executable timed out")
 
-            return proc_result.stdout.rstrip()
+            return proc_result.stdout.rstrip("\n")
 
     @classmethod
     def add_test_case(klass, name, input, expect):
