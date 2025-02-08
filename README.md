@@ -25,3 +25,4 @@ This repository provides tests for algorithms:
 - Digit sum
 - Factorial
 - Fibonacci sequence
+- Reverse letters
