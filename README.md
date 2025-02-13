@@ -26,4 +26,5 @@ This repository provides tests for algorithms:
 - Digit sum
 - Factorial
 - Fibonacci sequence
+- Monotonic sequence
 - Reverse letters
