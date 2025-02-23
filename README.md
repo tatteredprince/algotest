@@ -28,3 +28,4 @@ This repository provides tests for algorithms:
 - Fibonacci sequence
 - Monotonic sequence
 - Reverse letters
+- Zip arrays
