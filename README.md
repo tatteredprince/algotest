@@ -1,24 +1,28 @@
 Validate computational algorithms, run tests against external binary.
 
-Set environment variable as path to the external binary and execute like this: 
+Set path to external binary as first command line argument in tests run: 
 ```bash
-$ TESTEXEC=/path/to/the/external/executable algotest/array_sorting.py
+$ algotest/array_sorting.py /path/to/the/external/executable
 ...............
 ----------------------------------------------------------------------
 Ran 15 tests in 0.034s
 
 OK
 ```
-If the executable reads data from standard input set additional environment variable and execute like this:
+
+By default the executable gets test cases from standard input.
+ 
+If the executable proccesses test cases from command line arguments set second command line argument as logically true value:
 ```bash
-$ TESTEXEC=/path/to/the/external/executable USESTDIN=1 algotest/array_sorting.py
+$ algotest/array_sorting.py /path/to/the/external/executable 1
 ...............
 ----------------------------------------------------------------------
 Ran 15 tests in 0.034s
 
 OK
 ```
-Tests use Python's standard `unittest`, no additional dependencies are needed.
+
+Tests use Python's standard `unittest`, no additional dependencies are required.
 
 This repository provides tests for algorithms:
 - Array sorting

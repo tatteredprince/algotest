@@ -2,32 +2,45 @@
 """
 Base module for tests.
 
-Check environment variables and external executable before starting tests.
+Set path to target executable as first command line argument in tests run.
 
-Path to the executable is set via environment variable TESTEXEC.
+By default the executable gets test cases from standard input.
 
-If the executable gets data from standard input one should set environment variable USESTDIN.
+Set logically true value as second command line argument in tests run to pass test cases as command line arguments for executable.
 """
+
 import os
+import sys
 import subprocess
 import unittest
 
 
 class AlgoTest(unittest.TestCase):
-    def setUp(self, test_exec_key="TESTEXEC"):
+    ExecPath = None
+    UseCmdArgs = None
 
-        if test_exec_key not in os.environ:
-            raise KeyError("TESTEXEC is not found in environment variables")
+    def setUp(self):
+        if not self.ExecPath:
+            raise Exception("path to executable is not set")
 
-        self.test_exec = os.environ[test_exec_key]
+        if not os.path.exists(self.ExecPath):
+            raise FileNotFoundError("executable does not exist")
 
-        if not os.path.exists(self.test_exec):
-            raise FileNotFoundError("TESTEXEC file does not exist")
+        return super().setUp()
 
-    def execute(self, input, use_stdin_key="USESTDIN"):
+    def execute(self, input):
+        if self.UseCmdArgs:
+            proc_result = None
 
-        if use_stdin_key in os.environ and os.environ[use_stdin_key]:
-            proc = subprocess.Popen([self.test_exec], stdin=subprocess.PIPE,
+            try:
+                proc_result = subprocess.run(
+                    [self.ExecPath, input], capture_output=True, timeout=5, text=True)
+            except subprocess.TimeoutExpired:
+                raise ChildProcessError("executable timed out")
+
+            return proc_result.stdout.rstrip("\n")
+        else:
+            proc = subprocess.Popen([self.ExecPath], stdin=subprocess.PIPE,
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
             stdout = None
@@ -39,16 +52,6 @@ class AlgoTest(unittest.TestCase):
                 raise ChildProcessError("executable timed out")
 
             return stdout.rstrip("\n")
-        else:
-            proc_result = None
-
-            try:
-                proc_result = subprocess.run(
-                    [self.test_exec, input], capture_output=True, timeout=5, text=True)
-            except subprocess.TimeoutExpired:
-                raise ChildProcessError("executable timed out")
-
-            return proc_result.stdout.rstrip("\n")
 
     @classmethod
     def add_test_case(klass, name, input, expect):
@@ -57,3 +60,14 @@ class AlgoTest(unittest.TestCase):
             self.assertEqual(expect, got)
 
         setattr(klass, f"test_{name}", test_case)
+
+
+if len(sys.argv) > 1:
+    print(sys.argv)
+    AlgoTest.ExecPath = sys.argv[1]
+
+    if len(sys.argv) > 2:
+        AlgoTest.UseCmdArgs = 1
+
+    # Do not 'irritate' further unittest's command line arguments parsing
+    del (sys.argv[1:])
