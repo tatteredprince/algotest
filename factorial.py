@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 """
 Test external executable for factorial.
-
-Path to the executable is set via environment variable TESTEXEC.
-
-By default the executable gets factorial via command line arguments.
-
-If the executable gets input from standard input one should set environment variable USESTDIN.
 """
 import algotest
 import unittest

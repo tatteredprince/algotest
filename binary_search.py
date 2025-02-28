@@ -2,15 +2,11 @@
 """
 Test external executable for Binary search.
 
-Path to the executable is set via environment variable TESTEXEC.
+By default the executable gets a value to find and array sorted in ascending order.
 
-By default the executable gets a value to find and array sorted in ascending order via command line arguments.
+If an element is found executable should prints an array index starting from zero, or -1 otherwise.
 
-Executable should return index starting from zero for found element or -1.
-
-If array contains duplicates, then index of leftmost elements should be printed.
-
-If the executable gets input from standard input one should set environment variable USESTDIN.
+If an array contains duplicates, the index of leftmost element is printed.
 """
 import unittest
 import algotest

@@ -2,11 +2,7 @@
 """
 Test external executable for Fibonacci sequence.
 
-Path to the executable is set via environment variable TESTEXEC.
-
-By default the executable gets two numbers and quantity of numbers to calculate via command line arguments.
-
-If the executable gets input from standard input one should set environment variable USESTDIN.
+By default the executable gets two numbers and quantity of numbers to calculate.
 """
 import unittest
 import algotest

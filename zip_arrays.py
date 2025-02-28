@@ -2,11 +2,7 @@
 """
 Test external executable for zipping arrays.
 
-Path to the executable is set via environment variable TESTEXEC.
-
-By default the executable gets array of arrays to zip them into one-dimensional array via command line arguments.
-
-If the executable gets input from standard input one should set environment variable USESTDIN.
+By default the executable gets an array of arrays to zip them into an one-dimensional array.
 """
 import unittest
 import algotest

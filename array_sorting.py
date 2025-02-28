@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 """
 Test external executable for array sorting.
-
-Path to the executable is set via environment variable TESTEXEC.
-
-By default the executable should get an array via command line arguments.
-
-If the executable gets array from standard input one should set environment variable USESTDIN.
 """
 import unittest
 import algotest

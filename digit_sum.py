@@ -1,12 +1,8 @@
 #!/usr/bin/env python
 """
-Test external executable for Digit sum.
+Test external executable for digit sum.
 
-Path to the executable is set via environment variable TESTEXEC.
-
-By default the executable gets a number to summarize its numers via command line arguments.
-
-If the executable gets input from standard input one should set environment variable USESTDIN.
+By default the executable gets a number to summarize its digits.
 """
 import unittest
 import algotest

@@ -2,13 +2,9 @@
 """
 Test external executable for monotonic sequence.
 
-Path to the executable is set via environment variable TESTEXEC.
+By default the executable gets a sequence of ints to deduce if it is monotonously increasing or decreasing.
 
-By default the executable gets a sequence of ints to deduce if it is monotonously increasing or decreasing via command line arguments.
-
-External executable should print 1 for monotonic sequence or 0 otherwise.
-
-If the executable gets input from standard input one should set environment variable USESTDIN.
+External executable prints 1 for monotonic sequence, or 0 otherwise.
 """
 import unittest
 import algotest
