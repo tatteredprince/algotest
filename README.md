@@ -27,6 +27,7 @@ Tests use Python's standard `unittest`, no additional dependencies are required.
 This repository provides tests for algorithms:
 - Arab to roman number conversion
 - Array sorting
+- Balanced brackets
 - Balanced parentheses
 - Binary search
 - Digit sum
