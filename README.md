@@ -35,4 +35,5 @@ This repository provides tests for algorithms:
 - Fibonacci sequence
 - Monotonic sequence
 - Reverse letters
+- Two sum
 - Zip arrays
